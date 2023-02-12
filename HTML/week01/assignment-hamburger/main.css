@@ -1,0 +1,48 @@
+*
+*:before,
+*:after
+{
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 20px 0;
+}
+
+
+.hamburger-1 {
+    background-color: #c68958;
+    width: 200px;
+    height: 35px;
+    border-top-left-radius: 20%;
+    border-top-right-radius: 20%;
+    border-bottom-left-radius: 20%;
+    border-bottom-right-radius: 20%;
+    margin: 0 auto;
+    }
+
+.meat {
+        background-color: #471d11;
+        border-top-left-radius: 20%;
+        border-top-right-radius: 20%;
+        border-bottom-left-radius: 20%;
+        border-bottom-right-radius: 20%;
+        width: 200px;
+        height: 20px;
+        margin: 0 auto;
+    
+
+}
+
+.hamburger-2 {
+    background-color: #c68958;
+    width: 200px;
+    height: 35px;
+    border-top-left-radius: 20%;
+    border-top-right-radius: 20%;
+    border-bottom-left-radius: 20%;
+    border-bottom-right-radius: 20%;
+    margin: 0 auto;
+    }
+
