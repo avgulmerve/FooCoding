@@ -1,0 +1,164 @@
+*, 
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+}
+
+header{
+width: 100% ;
+height: 5% ;
+margin-left: auto;
+margin-right: auto;
+background-color: rgb(0, 187, 255);
+border-radius: 20px;
+}
+
+h1 {
+font-family:  'Times New Roman', Times, serif;
+text-align: center;
+font-size: 30px;
+}
+
+.personalinfo{
+text-align: center;
+
+}
+
+.profilpicture {
+border-radius: 150px;
+width: 130px;
+height: 130px;
+align-items: center;
+}
+
+body {
+    width: 1348px;
+    background-size: contain;
+}
+
+.list {
+    font-family: 'Segoe UI',monospace;
+ 
+}
+
+.menu-list {
+ 
+    font-family: "Segoe UI", Arial, sans-serif;
+
+}
+
+
+.menu-link {
+    position: relative;
+    display: block;
+    color: #aec9dc;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    transition: color .3s;
+    cursor: pointer;
+    line-height: 74px;
+    font-size: 17px;
+    font-weight: 900;
+    text-align: center;
+    font-family: 'Segoe UI',Arial,sans-serif;
+    width: 287px;
+    font-feature-settings: normal;
+    font-kerning: auto;
+    font-language-override: normal;
+    font-size: 17px;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-variant-alternates: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-variant-position: normal;
+    list-style-position: outside;
+    text-transform: uppercase;
+    box-sizing: content-box;
+    z-index: auto;
+}
+
+.name-and-tagline {
+    margin: 0 auto;
+    max-width: 1335px;
+    position: relative;
+    display: block;
+    height: 167.2;
+    color: #fff;
+    font-feature-settings: normal;
+    font-kerning: auto;
+    font-language-override: normal;
+    font-size: 18px;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-variant-alternates: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-variant-position: normal;
+    font-weight: 900;
+    letter-spacing: 2.7px;
+    line-height: 36px;
+    box-sizing: content-box;
+    z-index: auto;
+}
+
+#_name {
+    margin: 100px;
+    padding: 100px, 0;
+    text-align: center;
+    font-size: 76px;
+    line-height: 83.6px;
+    letter-spacing: .05em;
+    font-family: 'Segoe UI',Arial,sans-serif;
+    font-weight: 900;
+    display: block;
+    margin-block-start: .67em;
+    margin-block-end: .67em;
+    color: #fff;
+    height: 167.2px;
+    width: 1148px;
+    font-feature-settings: normal;
+    font-kerning: auto;
+    font-language-override: normal;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-variant-alternates: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-variant-position: normal;
+    box-sizing: content-box;
+    position: relative;
+    z-index: auto;
+}
+
+#name-tagline {
+    padding: auto;
+    margin: 0 auto;
+    max-width: 1148px;
+    height: 74x;
+    position: relative;
+    display: block;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-feature-settings: normal;
+    font-kerning: auto;
+    font-language-override: normal;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 2.7px;
+    line-height: 36px;
+    box-sizing: content-box;
+    float: none;
+    z-index: auto;
+}
+
