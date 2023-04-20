@@ -10,11 +10,6 @@ console.log(pokeObj)
 console.log(pokeObj.name)
 
 const container = document.querySelector('.container');
-  //const spriteImg = document.createElement('img');
-  //container.append(spriteImg);
-  //spriteImg.setAttribute('class', 'sprite_img');
-  //let address = pokeObj.sprites
-  //spriteImg.src = address.back_default;
 
 pokeList = Object.values(pokeObj.sprites)
 
