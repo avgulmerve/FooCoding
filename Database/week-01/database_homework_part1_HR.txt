@@ -31,6 +31,20 @@ mysql> show databases
 mysql> use HR
 Database changed
 
+mysql> CREATE TABLE `locations` (
+    ->   `locationId` INT NOT NULL AUTO_INCREMENT,
+    ->   `phone` VARCHAR(50) NOT NULL,
+    ->   `addressLine1` VARCHAR(50) NOT NULL,
+    ->   `addressLine2` VARCHAR(50),
+    ->   `city` VARCHAR(50) NOT NULL,
+    ->   `state` VARCHAR(50),
+    ->   `postalCode` VARCHAR(15),
+    ->   `country` VARCHAR(50) NOT NULL,
+    ->   PRIMARY KEY (`locationId`)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+
 mysql> CREATE TABLE `employees` (
     ->   `employeeNumber` INT NOT NULL,
     ->   `lastName` VARCHAR(50) NOT NULL,
@@ -39,9 +53,27 @@ mysql> CREATE TABLE `employees` (
     ->   `email` VARCHAR(100) NOT NULL,
     ->   `reportsTo` INT,
     ->   `jobTitle` VARCHAR(50) NOT NULL,
-    ->   PRIMARY KEY (`employeeNumber`)
+    ->   `locationId` INT NOT NULL,
+    ->   PRIMARY KEY (`employeeNumber`),
+    ->   FOREIGN KEY (`locationId`) REFERENCES `locations` (`locationId`)
     -> );
-Query OK, 0 rows affected (0.02 sec)
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> describe locations
+    -> ;
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| locationId   | int         | NO   | PRI | NULL    | auto_increment |
+| phone        | varchar(50) | NO   |     | NULL    |                |
+| addressLine1 | varchar(50) | NO   |     | NULL    |                |
+| addressLine2 | varchar(50) | YES  |     | NULL    |                |
+| city         | varchar(50) | NO   |     | NULL    |                |
+| state        | varchar(50) | YES  |     | NULL    |                |
+| postalCode   | varchar(15) | YES  |     | NULL    |                |
+| country      | varchar(50) | NO   |     | NULL    |                |
++--------------+-------------+------+-----+---------+----------------+
+8 rows in set (0.00 sec)
 
 mysql> describe employees;
 +----------------+--------------+------+-----+---------+-------+
@@ -54,55 +86,42 @@ mysql> describe employees;
 | email          | varchar(100) | NO   |     | NULL    |       |
 | reportsTo      | int          | YES  |     | NULL    |       |
 | jobTitle       | varchar(50)  | NO   |     | NULL    |       |
+| locationId     | int          | NO   | MUL | NULL    |       |
 +----------------+--------------+------+-----+---------+-------+
-7 rows in set (0.00 sec)
+8 rows in set (0.00 sec)
 
-mysql> INSERT INTO `employees` VALUES
-    ->     (1002,'Murphy','Diane','x5800','dmurphy@classicmodelcars.com',NULL,'President'),
-    ->     (1056,'Patterson','Mary','x4611','mpatterso@classicmodelcars.com',1002,'VP Sales'),
-    ->     (1076,'Firrelli','Jeff','x9273','jfirrelli@classicmodelcars.com',1002,'VP Marketing'),
-    ->     (1088,'Patterson','William','x4871','wpatterson@classicmodelcars.com',1056,'Sales Manager (APAC)'),
-    ->     (1102,'Bondur','Gerard','x5408','gbondur@classicmodelcars.com',1056,'Sale Manager (EMEA)'),
-    ->     (1143,'Bow','Anthony','x5428','abow@classicmodelcars.com',1056,'Sales Manager (NA)'),
-    ->     (1165,'Jennings','Leslie','x3291','ljennings@classicmodelcars.com',1143,'Sales Rep'),
-    ->     (1166,'Thompson','Leslie','x4065','lthompson@classicmodelcars.com',1143,'Sales Rep'),
-    ->     (1188,'Firrelli','Julie','x2173','jfirrelli@classicmodelcars.com',1143,'Sales Rep'),
-    ->     (1216,'Patterson','Steve','x4334','spatterson@classicmodelcars.com',1143,'Sales Rep'),
-    ->     (1286,'Tseng','Foon Yue','x2248','ftseng@classicmodelcars.com',1143,'Sales Rep'),
-    ->     (1323,'Vanauf','George','x4102','gvanauf@classicmodelcars.com',1143,'Sales Rep'),
-    ->     (1337,'Bondur','Loui','x6493','lbondur@classicmodelcars.com',1102,'Sales Rep');
-Query OK, 13 rows affected (0.01 sec)
-Records: 13  Duplicates: 0  Warnings: 0
 
-mysql> CREATE TABLE `locations` (
-    ->   `employeeNumber` INT NOT NULL,
-    ->   `phone` VARCHAR(50) NOT NULL,
-    ->   `addressLine1` VARCHAR(50) NOT NULL,
-    ->   `addressLine2` VARCHAR(50),
-    ->   `city` VARCHAR(50) NOT NULL,
-    ->   `state` VARCHAR(50),
-    ->   `postalCode` VARCHAR(15),
-    ->   `country` VARCHAR(50) NOT NULL,
-    ->   FOREIGN KEY (`employeeNumber`) REFERENCES `employees` (`employeeNumber`)
-    -> );
-Query OK, 0 rows affected (0.02 sec)
-
-mysql> INSERT INTO `locations` (`employeeNumber`, `phone`, `addressLine1`, `addressLine2`, `city`, `state`, `postalCode`, `country`) VALUES
-    -> (1002, '40.32.2555', '54 rue Royale', NULL, 'Nantes', NULL, '44000', 'France'),
-    -> (1056, '7025551838', '8489 Strong St', NULL, 'Las Vegas', 'NV', '83030', 'USA'),
-    -> (1076, '03 9520 4555', '636 St Kilda Road', 'Level 3', 'Melbourne', 'Victoria', '3004', 'Australia'),
-    -> (1088, '40.67.8555', '67rue des Cinquante Otages', NULL, 'Nantes', NULL, '44000', 'France'),
-    -> (1102, '07-98 9555', 'Erling Skakkes gate 78', NULL, 'Stavern', NULL, '4110', 'Norway'),
-    -> (1143, '4155551450', '5677 Strong St', NULL, 'San Rafael', 'CA', '97562', 'USA'),
-    -> (1165, '(26) 642-7555', 'ul. Filtrowa 68', NULL, 'Warszawa', NULL, '01-012', 'Poland'),
-    -> (1166, '+49 69 66 90 2555', 'Lyonerstr. 34', NULL, 'Frankfurt', NULL, '60528', 'Germany'),
-    -> (1188, '6505555787', '5557 North Pendale Street', NULL, 'San Francisco', 'CA', '94217', 'USA'),
-    -> (1216, '6505555787', '897 Long Airport Avenue', NULL, 'NYC', 'NY', '10022', 'USA'),
-    -> (1286, '(91) 555 94 44', 'C/ Moralzarzal 86', NULL, 'Madrid', NULL, '28034', 'Spain'),
-    -> (1323, '0921-12 3555', 'Berguvsv', NULL, 'Lule', NULL, 'S-958 22', 'Sweden'),
-    -> (1337, '31 12 3555', 'Vinb', NULL, 'Kobenhavn', NULL, '1734', 'Denmark');
+mysql> INSERT INTO `locations` (`locationId`, `phone`, `addressLine1`, `addressLine2`, `city`, `state`, `postalCode`, `country`) VALUES
+    ->   (1, '40.32.2555', '54 rue Royale', NULL, 'Nantes', NULL, '44000', 'France'),
+    ->   (2, '7025551838', '8489 Strong St', NULL, 'Las Vegas', 'NV', '83030', 'USA'),
+    ->   (3, '03 9520 4555', '636 St Kilda Road', 'Level 3', 'Melbourne', 'Victoria', '3004', 'Australia'),
+    ->   (4, '40.67.8555', '67rue des Cinquante Otages', NULL, 'Nantes', NULL, '44000', 'France'),
+    ->   (5, '07-98 9555', 'Erling Skakkes gate 78', NULL, 'Stavern', NULL, '4110', 'Norway'),
+    ->   (6, '4155551450', '5677 Strong St', NULL, 'San Rafael', 'CA', '97562', 'USA'),
+    ->   (7, '(26) 642-7555', 'ul. Filtrowa 68', NULL, 'Warszawa', NULL, '01-012', 'Poland'),
+    ->   (8, '+49 69 66 90 2555', 'Lyonerstr. 34', NULL, 'Frankfurt', NULL, '60528', 'Germany'),
+    ->   (9, '6505555787', '5557 North Pendale Street', NULL, 'San Francisco', 'CA', '94217', 'USA'),
+    ->   (10, '6505555787', '897 Long Airport Avenue', NULL, 'NYC', 'NY', '10022', 'USA'),
+    ->   (11, '(91) 555 94 44', 'C/ Moralzarzal 86', NULL, 'Madrid', NULL, '28034', 'Spain'),
+    ->   (12, '0921-12 3555', 'Berguvsv', NULL, 'Lule', NULL, 'S-958 22', 'Sweden'),
+    ->   (13, '31 12 3555', 'Vinb', NULL, 'Kobenhavn', NULL, '1734', 'Denmark');
 Query OK, 13 rows affected (0.00 sec)
 Records: 13  Duplicates: 0  Warnings: 0
 
-
+mysql> INSERT INTO `employees` (`employeeNumber`, `lastName`, `firstName`, `extension`, `email`, `reportsTo`, `jobTitle`, `locationId`) VALUES
+    ->   (1002, 'Murphy', 'Diane', 'x5800', 'dmurphy@classicmodelcars.com', NULL, 'President', 1),
+    ->   (1056, 'Patterson', 'Mary', 'x4611', 'mpatterso@classicmodelcars.com', 1002, 'VP Sales', 2),
+    ->   (1076, 'Firrelli', 'Jeff', 'x9273', 'jfirrelli@classicmodelcars.com', 1002, 'VP Marketing', 3),
+    ->   (1088, 'Patterson', 'William', 'x4871', 'wpatterson@classicmodelcars.com', 1056, 'Sales Manager (APAC)', 1),
+    ->   (1102, 'Bondur', 'Gerard', 'x5408', 'gbondur@classicmodelcars.com', 1056, 'Sales Manager (EMEA)', 4),
+    ->   (1143, 'Bow', 'Anthony', 'x5428', 'abow@classicmodelcars.com', 1056, 'Sales Manager (NA)', 5),
+    ->   (1165, 'Jennings', 'Leslie', 'x3291', 'ljennings@classicmodelcars.com', 1143, 'Sales Rep', 7),
+    ->   (1166, 'Thompson', 'Leslie', 'x4065', 'lthompson@classicmodelcars.com', 1143, 'Sales Rep', 8),
+    ->   (1188, 'Firrelli', 'Julie', 'x2173', 'jfirrelli@classicmodelcars.com', 1143, 'Sales Rep', 9),
+    ->   (1216, 'Patterson', 'Steve', 'x4334', 'spatterson@classicmodelcars.com', 1143, 'Sales Rep', 10),
+    ->   (1286, 'Tseng', 'Foon Yue', 'x2248', 'ftseng@classicmodelcars.com', 1143, 'Sales Rep', 11),
+    ->   (1323, 'Vanauf', 'George', 'x4102', 'gvanauf@classicmodelcars.com', 1143, 'Sales Rep', 12),
+    ->   (1337, 'Bondur', 'Loui', 'x6493', 'lbondur@classicmodelcars.com', 1102, 'Sales Rep', 13);
+Query OK, 13 rows affected (0.01 sec)
+Records: 13  Duplicates: 0  Warnings: 0
 
