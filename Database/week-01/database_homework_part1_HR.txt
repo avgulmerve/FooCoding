@@ -116,6 +116,18 @@ mysql> create table`locations` (
     ->   PRIMARY KEY (`employeeNumber`));
 Query OK, 0 rows affected, 1 warning (0.02 sec)
 
+mysql> create table`locations` (
+    -> employeeNumber INT,
+    -> `phone` VARCHAR(50) NOT NULL,
+    -> `addressLine1` VARCHAR(50) NOT NULL,
+    -> `addressLine2` VARCHAR(50) NULL DEFAULT NULL,
+    -> `city` VARCHAR(50) NOT NULL,
+    -> `state` VARCHAR(50) NULL DEFAULT NULL,
+    -> `postalCode` VARCHAR(15) NULL DEFAULT NULL,
+    -> `country` VARCHAR(50) NOT NULL,
+    ->     FOREIGN KEY (employeeNumber)
+    ->         REFERENCES employees(employeeNumber));
+Query OK, 0 rows affected (0.01 sec)
 
 mysql> show tables
     -> ;
@@ -127,12 +139,11 @@ mysql> show tables
 +--------------+
 2 rows in set (0.00 sec)
 
-mysql> describe locations
-    -> ;
+mysql> describe locations;
 +----------------+-------------+------+-----+---------+-------+
 | Field          | Type        | Null | Key | Default | Extra |
 +----------------+-------------+------+-----+---------+-------+
-| employeeNumber | int         | NO   | PRI | NULL    |       |
+| employeeNumber | int         | YES  | MUL | NULL    |       |
 | phone          | varchar(50) | NO   |     | NULL    |       |
 | addressLine1   | varchar(50) | NO   |     | NULL    |       |
 | addressLine2   | varchar(50) | YES  |     | NULL    |       |
@@ -142,10 +153,6 @@ mysql> describe locations
 | country        | varchar(50) | NO   |     | NULL    |       |
 +----------------+-------------+------+-----+---------+-------+
 8 rows in set (0.00 sec)
-
-mysql> INSERT INTO `locations` VALUES
-    -> (1002, '40.32.2555' , '54 rue Royale' , NULL , 'Nantes' , NULL , '44000' , 'France');
-Query OK, 1 row affected (0.00 sec)
 
 mysql> INSERT INTO `locations` VALUES
     -> (1056, '7025551838' , '8489 Strong St' , NULL , 'Las Vegas' , 'NV' , '83030' , 'USA'),
@@ -183,5 +190,8 @@ mysql> select * from locations
 |           1337 | 31 12 3555        | Vinb                       | NULL         | Kobenhavn     | NULL     | 1734       | Denmark   |
 +----------------+-------------------+----------------------------+--------------+---------------+----------+------------+-----------+
 13 rows in set (0.00 sec)
+
+
+
 
 
