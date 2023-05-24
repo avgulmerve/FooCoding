@@ -75,7 +75,6 @@ Query OK, 13 rows affected (0.01 sec)
 Records: 13  Duplicates: 0  Warnings: 0
 
 mysql> CREATE TABLE `locations` (
-    ->   `locationId` INT NOT NULL,
     ->   `employeeNumber` INT NOT NULL,
     ->   `phone` VARCHAR(50) NOT NULL,
     ->   `addressLine1` VARCHAR(50) NOT NULL,
@@ -84,28 +83,26 @@ mysql> CREATE TABLE `locations` (
     ->   `state` VARCHAR(50),
     ->   `postalCode` VARCHAR(15),
     ->   `country` VARCHAR(50) NOT NULL,
-    ->   PRIMARY KEY (`locationId`),
     ->   FOREIGN KEY (`employeeNumber`) REFERENCES `employees` (`employeeNumber`)
     -> );
 Query OK, 0 rows affected (0.02 sec)
 
-mysql> INSERT INTO `locations` VALUES
-    -> (1, 1002, '40.32.2555', '54 rue Royale', NULL, 'Nantes', NULL, '44000', 'France'),
-    -> (2, 1056, '7025551838', '8489 Strong St', NULL, 'Las Vegas', 'NV', '83030', 'USA'),
-    -> (3, 1076, '03 9520 4555', '636 St Kilda Road', 'Level 3', 'Melbourne', 'Victoria', '3004', 'Australia'),
-    -> (4, 1088, '40.67.8555', '67rue des Cinquante Otages', NULL, 'Nantes', NULL, '44000', 'France'),
-    -> (5, 1102, '07-98 9555', 'Erling Skakkes gate 78', NULL, 'Stavern', NULL, '4110', 'Norway'),
-    -> (6, 1143, '4155551450', '5677 Strong St', NULL, 'San Rafael', 'CA', '97562', 'USA'),
-    -> (7, 1165, '(26) 642-7555', 'ul. Filtrowa 68', NULL, 'Warszawa', NULL, '01-012', 'Poland'),
-    -> (8, 1166, '+49 69 66 90 2555', 'Lyonerstr. 34', NULL, 'Frankfurt', NULL, '60528', 'Germany'),
-    -> (9, 1188, '6505555787', '5557 North Pendale Street', NULL, 'San Francisco', 'CA', '94217', 'USA'),
-    -> (10, 1216, '6505555787', '897 Long Airport Avenue', NULL, 'NYC', 'NY', '10022', 'USA'),
-    -> (11, 1286, '(91) 555 94 44', 'C/ Moralzarzal 86', NULL, 'Madrid', NULL, '28034', 'Spain'),
-    -> (12, 1323, '0921-12 3555', 'Berguvsv', NULL, 'Lule', NULL, 'S-958 22', 'Sweden'),
-    -> (13, 1337, '31 12 3555', 'Vinb', NULL, 'Kobenhavn', NULL, '1734', 'Denmark');
-Query OK, 13 rows affected (0.01 sec)
+mysql> INSERT INTO `locations` (`employeeNumber`, `phone`, `addressLine1`, `addressLine2`, `city`, `state`, `postalCode`, `country`) VALUES
+    -> (1002, '40.32.2555', '54 rue Royale', NULL, 'Nantes', NULL, '44000', 'France'),
+    -> (1056, '7025551838', '8489 Strong St', NULL, 'Las Vegas', 'NV', '83030', 'USA'),
+    -> (1076, '03 9520 4555', '636 St Kilda Road', 'Level 3', 'Melbourne', 'Victoria', '3004', 'Australia'),
+    -> (1088, '40.67.8555', '67rue des Cinquante Otages', NULL, 'Nantes', NULL, '44000', 'France'),
+    -> (1102, '07-98 9555', 'Erling Skakkes gate 78', NULL, 'Stavern', NULL, '4110', 'Norway'),
+    -> (1143, '4155551450', '5677 Strong St', NULL, 'San Rafael', 'CA', '97562', 'USA'),
+    -> (1165, '(26) 642-7555', 'ul. Filtrowa 68', NULL, 'Warszawa', NULL, '01-012', 'Poland'),
+    -> (1166, '+49 69 66 90 2555', 'Lyonerstr. 34', NULL, 'Frankfurt', NULL, '60528', 'Germany'),
+    -> (1188, '6505555787', '5557 North Pendale Street', NULL, 'San Francisco', 'CA', '94217', 'USA'),
+    -> (1216, '6505555787', '897 Long Airport Avenue', NULL, 'NYC', 'NY', '10022', 'USA'),
+    -> (1286, '(91) 555 94 44', 'C/ Moralzarzal 86', NULL, 'Madrid', NULL, '28034', 'Spain'),
+    -> (1323, '0921-12 3555', 'Berguvsv', NULL, 'Lule', NULL, 'S-958 22', 'Sweden'),
+    -> (1337, '31 12 3555', 'Vinb', NULL, 'Kobenhavn', NULL, '1734', 'Denmark');
+Query OK, 13 rows affected (0.00 sec)
 Records: 13  Duplicates: 0  Warnings: 0
-
 
 
 
