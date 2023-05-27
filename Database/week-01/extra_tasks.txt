@@ -1,0 +1,78 @@
+// EXTRA TASKS: THE NAMES OF THE COUNTRIES THAT HAS MORE THAN 10 CITIES, AND A TOTAL POPULATION OF THE CITIES LİSTED(NOT THE COUNTRY POPULATION) OF MORE THAN 50 MILLION 
+
+mysql>SELECT country.name FROM country JOIN city ON city.countrycode=country.code GROUP BY country.name HAVING COUNT(city.id)>10;
+
++---------------------------------------+
+| name                                  |
++---------------------------------------+
+| Argentina                             |
+| Australia                             |
+| Bangladesh                            |
+| Belarus                               |
+| Brazil                                |
+| Canada                                |
+| Chile                                 |
+| China                                 |
+| Congo, The Democratic Republic of the |
+| Colombia                              |
+| Cuba                                  |
+| Germany                               |
+| Algeria                               |
+| Ecuador                               |
+| Egypt                                 |
+| Spain                                 |
+| France                                |
+| United Kingdom                        |
+| Indonesia                             |
+| India                                 |
+| Iran                                  |
+| Iraq                                  |
+| Israel                                |
+| Italy                                 |
+| Japan                                 |
+| Kazakstan                             |
+| South Korea                           |
+| Morocco                               |
+| Mexico                                |
+| Myanmar                               |
+| Mozambique                            |
+| Malaysia                              |
+| Nigeria                               |
+| Netherlands                           |
+| Pakistan                              |
+| Peru                                  |
+| Philippines                           |
+| Poland                                |
+| North Korea                           |
+| Romania                               |
+| Russian Federation                    |
+| Saudi Arabia                          |
+| Sudan                                 |
+| Sweden                                |
+| Syria                                 |
+| Thailand                              |
+| Turkey                                |
+| Taiwan                                |
+| Ukraine                               |
+| United States                         |
+| Uzbekistan                            |
+| Venezuela                             |
+| Vietnam                               |
+| South Africa                          |
++---------------------------------------+
+54 rows in set (0.01 sec)
+
+mysql> SELECT country.name FROM country JOIN city ON country.Code = city.CountryCode GROUP BY country.code, country.name HAVING COUNT(city.ID) > 10 AND SUM(city.Population) > 50000000;
++--------------------+
+| name               |
++--------------------+
+| Brazil             |
+| China              |
+| India              |
+| Japan              |
+| Mexico             |
+| Russian Federation |
+| United States      |
++--------------------+
+7 rows in set (0.02 sec)
+
