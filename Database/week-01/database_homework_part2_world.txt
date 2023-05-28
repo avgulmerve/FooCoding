@@ -917,3 +917,110 @@ mysql> SELECT SUM(population) FROM country;
 +-----------------+
 1 row in set (0.00 sec)
 
+
+//QUESTİON EXTRA : the names of the countries that has more than 10 cities.
+
+mysql> SELECT country.name FROM country JOIN city ON city.countrycode=country.code GROUP BY country.name HAVING COUNT(city.id)>10;
++---------------------------------------+
+| name                                  |
++---------------------------------------+
+| Argentina                             |
+| Australia                             |
+| Bangladesh                            |
+| Belarus                               |
+| Brazil                                |
+| Canada                                |
+| Chile                                 |
+| China                                 |
+| Congo, The Democratic Republic of the |
+| Colombia                              |
+| Cuba                                  |
+| Germany                               |
+| Algeria                               |
+| Ecuador                               |
+| Egypt                                 |
+| Spain                                 |
+| France                                |
+| United Kingdom                        |
+| Indonesia                             |
+| India                                 |
+| Iran                                  |
+| Iraq                                  |
+| Israel                                |
+| Italy                                 |
+| Japan                                 |
+| Kazakstan                             |
+| South Korea                           |
+| Morocco                               |
+| Mexico                                |
+| Myanmar                               |
+| Mozambique                            |
+| Malaysia                              |
+| Nigeria                               |
+| Netherlands                           |
+| Pakistan                              |
+| Peru                                  |
+| Philippines                           |
+| Poland                                |
+| North Korea                           |
+| Romania                               |
+| Russian Federation                    |
+| Saudi Arabia                          |
+| Sudan                                 |
+| Sweden                                |
+| Syria                                 |
+| Thailand                              |
+| Turkey                                |
+| Taiwan                                |
+| Ukraine                               |
+| United States                         |
+| Uzbekistan                            |
+| Venezuela                             |
+| Vietnam                               |
+| South Africa                          |
++---------------------------------------+
+54 rows in set (0.01 sec)
+
+// And a total population of the cities listed (not the country population) of more than 50 million
+
+mysql> SELECT country.name FROM country JOIN city ON country.Code = city.CountryCode GROUP BY country.code, country.name HAVING COUNT(city.ID) > 10 AND SUM(city.Population) > 50000000;
++--------------------+
+| name               |
++--------------------+
+| Brazil             |
+| China              |
+| India              |
+| Japan              |
+| Mexico             |
+| Russian Federation |
+| United States      |
++--------------------+
+7 rows in set (0.02 sec)
+
+QUESTION EXTRA EXTRA : List the cities from those countries, where the city population is > 5M
+
+mysql> SELECT city.Name, country.name FROM country JOIN city ON country.Code = city.CountryCode 
+    -> WHERE country.Code IN ( SELECT country.Code FROM country JOIN city ON country.Code = city.CountryCode  GROUP BY country.Code HAVING COUNT(city.ID) > 10 AND SUM(city.Population) > 50000000) AND city.Population > 5000000;
++-------------------+--------------------+
+| Name              | name               |
++-------------------+--------------------+
+| São Paulo         | Brazil             |
+| Rio de Janeiro    | Brazil             |
+| Mumbai (Bombay)   | India              |
+| Delhi             | India              |
+| Tokyo             | Japan              |
+| Shanghai          | China              |
+| Peking            | China              |
+| Chongqing         | China              |
+| Tianjin           | China              |
+| Ciudad de México  | Mexico             |
+| Moscow            | Russian Federation |
+| New York          | United States      |
++-------------------+--------------------+
+12 rows in set (0.02 sec)
+
+QUESTİON EXTRA EXTRA EXTRA : List the largest country on each continent (except Antarctica)
+
+
+
+
