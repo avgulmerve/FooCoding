@@ -25,7 +25,7 @@ DEALLOCATE PREPARE statement_4;
 
 -- 5. For the country given as input, check if there are any countries that have the same official language and are in the same continent
 
-PREPARE statement_5 FROM 'SELECT IFNULL(GROUP_CONCAT(c2.Name), "False") AS MatchingCountries FROM country AS c1 JOIN country AS c2 ON c1.Code <> c2.Code JOIN countrylanguage AS cl1 ON c1.Code = cl1.CountryCode AND cl1.IsOfficial = "T" JOIN countrylanguage AS cl2 ON c2.Code = cl2.CountryCode AND cl2.IsOfficial = "T" WHERE c1.Name = ? AND c1.Continent = c2.Continent AND cl1.Language = cl2.Language GROUP BY c1.Code';
+PREPARE statement_5 FROM 'SELECT IFNULL(GROUP_CONCAT(c2.Name), "False") AS MatchingCountries FROM country AS c1 JOIN country AS c2 ON c1.Code <> c2.Code JOIN countrylanguage AS cl1 ON c1.Code = cl1.CountryCode AND cl1.IsOfficial = "T" JOIN countrylanguage AS cl2 ON c2.Code = cl2.CountryCode AND cl2.IsOfficial = "T" WHERE c1.Name = ? AND c1.Continent = c2.Continent AND cl1.Language = cl2.Language';
 SET @country = 'Vietnam';
 EXECUTE statement_5 using @country;
 DEALLOCATE PREPARE statement_5;
