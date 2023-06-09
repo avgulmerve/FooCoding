@@ -1,4 +1,4 @@
-#TodoApp
+# TodoApp
 
 TodoApp is an application which was made using node.js and mySQL for create users, todolists and add items, tags and reminders.
 
@@ -11,7 +11,7 @@ Use the "npm" as package manager to install express.js and mySQL2 packages
 `npm install express`
 `npm install mysql2`
 
-##Usage
+## Usage
 
 In mysql file, create app database and tables. Be aware, when creating tables include foreign keys, null or not null and auto increment values.
 
@@ -68,7 +68,7 @@ To add the changes the database use the queries(INSERT INTO/DELETE/UPDATE statem
  
  For avoid creating "undefined" user/list/item/reminder, add if statements in query functions.
 
-##Testing
+## Testing
 
 For the testing;
 
@@ -81,4 +81,4 @@ for testing in CLI :  `curl -X POST -H "Content-Type: application/json" -d '{"us
 for testing in a GUI : https://www.postman.com/descent-module-specialist-92670130/workspace/todoapp/request/27811356-5611bca7-4ac6-49f8-b8e7-6dcec5de6005
 
 
-##Contributing
+## Contributing
