@@ -2,7 +2,7 @@
 
 TodoApp is an application which was made using node.js and mySQL for create users, todolists and add items, tags and reminders.
 
-##Installation
+## Installation
 
 Use the [mysql](https://www.mysql.com/downloads/) for creating database.
 
