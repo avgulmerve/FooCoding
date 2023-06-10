@@ -15,7 +15,7 @@ Use the "npm" as package manager to install express.js and mySQL2 packages
 
 In mysql file, create app database and tables. Be aware, when creating tables include foreign keys, null or not null and auto increment values.
 
-`CREATE DATABASE  IF NOT EXISTS `todoapp
+`CREATE DATABASE  IF NOT EXISTS todoapp
 ...`
 
 In node.js file, Call the express.js and mysql2 modules.
