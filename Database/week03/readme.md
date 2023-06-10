@@ -78,7 +78,7 @@ create values in .json format :
 
 delete values in url end :
 
-`todoapp/signup/:user_id` replace `todoapp/signup/:1`
+`todoapp/signup/:user_id` replace `todoapp/signup/1`
 
 
 for testing in CLI :  `curl -X POST -H "Content-Type: application/json" -d '{"username":"test"}' http://localhost:3000/api/signup`
