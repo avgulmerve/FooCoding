@@ -76,9 +76,13 @@ create values in .json format :
 
 `{"username":"test"}`
 
+delete values in url end :
+
+`todoapp/signup/:user_id` replace `todoapp/signup/:1`
+
+
 for testing in CLI :  `curl -X POST -H "Content-Type: application/json" -d '{"username":"test"}' http://localhost:3000/api/signup`
 
 for testing in a GUI : https://www.postman.com/descent-module-specialist-92670130/workspace/todoapp/request/27811356-5611bca7-4ac6-49f8-b8e7-6dcec5de6005
 
 
-## Contributing
