@@ -2,11 +2,9 @@
   "name": "week_03",
   "version": "1.0.0",
   "main": "app.js",
-   "scripts": {
-      "precompress": "{{ executes BEFORE the `compress` script }}",
-      "compress": "{{ run command to compress files }}",
-      "postcompress": "{{ executes AFTER `compress` script }}"
-   },
+  "scripts": {
+    "start": "node foo.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
