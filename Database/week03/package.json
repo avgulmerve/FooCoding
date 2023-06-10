@@ -2,9 +2,11 @@
   "name": "week_03",
   "version": "1.0.0",
   "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+   "scripts": {
+      "precompress": "{{ executes BEFORE the `compress` script }}",
+      "compress": "{{ run command to compress files }}",
+      "postcompress": "{{ executes AFTER `compress` script }}"
+   },
   "keywords": [],
   "author": "",
   "license": "ISC",
