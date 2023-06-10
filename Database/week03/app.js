@@ -8,7 +8,7 @@ const port = 8080;
 const connection = mysql.createConnection ({
     host: 'localhost',
     user: 'root',
-    password: 'Adem1991',
+    password: 'password',
     database: 'todoappdb'
 })
 
