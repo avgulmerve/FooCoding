@@ -73,6 +73,6 @@ delete values in url end :
 
 for testing in CLI :  `curl -X POST -H "Content-Type: application/json" -d '{"username":"test"}' http://localhost:3000/api/signup`
 
-for testing in a GUI : https://www.postman.com/descent-module-specialist-92670130/workspace/todoapp/request/27811356-5611bca7-4ac6-49f8-b8e7-6dcec5de6005
+for testing in a GUI : https://www.postman.com/descent-module-specialist-92670130/workspace/todoapp/request/27811356-803f4d5c-f1e4-492e-b245-e6f25e591913
 
 
